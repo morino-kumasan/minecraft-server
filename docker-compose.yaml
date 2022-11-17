@@ -8,6 +8,7 @@ services:
         - MINECRAFT_VERSION=1.19.2
         - PAPER_MINOR_VERSION=271
     environment:
+      - EULA=true
       - "WORLD_NAME=${WORLD_NAME:-default_world}"
       - "HEAP_INIT=${HEAP_INIT:-1024M}"
       - "HEAP_MAX=${HEAP_MAX:-1024M}"
