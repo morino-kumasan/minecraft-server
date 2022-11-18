@@ -12,5 +12,6 @@ ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 VOLUME /minecraft/worlds
+EXPOSE 25565
 
 ENTRYPOINT ["/entrypoint.sh"]
