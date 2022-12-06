@@ -2,7 +2,7 @@
 
 # backup
 cd /minecraft/worlds
-if [[ -d "${WORLD_NAME}" ]]; then
+if [[ -d "${WORLD_NAME}/world" ]]; then
   tar -zcf "${WORLD_NAME}_$(date +"%Y%m%d%H%M%S").tar.gz" "${WORLD_NAME}"
 fi
 
