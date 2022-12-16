@@ -8,7 +8,7 @@ export MSYS_NO_PATHCONV=1
   WORLD_NAME=${WORLD_NAME:-default_world}
 
   docker stop "minecraft-server-${WORLD_NAME}"
-  socker logs -f "minecraft-server-${WORLD_NAME}"
+  docker logs -f "minecraft-server-${WORLD_NAME}"
 
   # backup
   cd ./worlds
