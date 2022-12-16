@@ -5,7 +5,6 @@ export MSYS_NO_PATHCONV=1
 (
   cd "$(dirname "$0")"
   source ./.env
-
   WORLD_NAME=${WORLD_NAME:-default_world}
 
   docker build \

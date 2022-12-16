@@ -1,14 +1,8 @@
 #!/bin/sh -eux
 
-# backup
-cd /minecraft/worlds
-if [[ -d "${WORLD_NAME}/world" ]]; then
-  tar -zcf "${WORLD_NAME}_$(date +"%Y%m%d%H%M%S").tar.gz" "${WORLD_NAME}"
-fi
-
 # world dir
-mkdir -p "${WORLD_NAME}"
-cd "${WORLD_NAME}"
+mkdir -p "/minecraft/worlds/${WORLD_NAME}"
+cd "/minecraft/worlds/${WORLD_NAME}"
 
 # agree minecraft eula
 if [[ -f eula.txt ]]; then
