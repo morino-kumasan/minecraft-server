@@ -7,12 +7,14 @@ export MSYS_NO_PATHCONV=1
   source ./.env
   WORLD_NAME=${WORLD_NAME:-default_world}
 
+  # ビルド
   docker build \
     -t minecraft \
     --build-arg MINECRAFT_VERSION=1.19.2 \
     --build-arg PAPER_MINOR_VERSION=271 \
     ./docker/minecraft
 
+  # 起動
   docker run -itd \
     --mount "type=bind,src=$(pwd)/worlds,dst=/minecraft/worlds" \
     -e EULA=true \
