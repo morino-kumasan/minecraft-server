@@ -10,8 +10,8 @@ export MSYS_NO_PATHCONV=1
   # ビルド
   docker build \
     -t minecraft \
-    --build-arg MINECRAFT_VERSION=1.19.2 \
-    --build-arg PAPER_MINOR_VERSION=271 \
+    --build-arg MINECRAFT_VERSION=${MINECRAFT_VERSION:-1.19.3} \
+    --build-arg PAPER_MINOR_VERSION=${PAPER_MINOR_VERSION:-345} \
     ./docker/minecraft
 
   # 起動
