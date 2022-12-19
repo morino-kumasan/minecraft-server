@@ -3,13 +3,13 @@
 ## サーバーの起動
 
 ```
-docker-compose up -d
+./run.sh
 ```
 
 ## サーバーの停止
 
 ```
-docker-compose stop
+./stop.sh
 ```
 
 ## 設定ファイル
