@@ -4,17 +4,14 @@ export MSYS_NO_PATHCONV=1
 
 (
   cd "$(dirname "$0")"
-  source ./.env
+
+  if [[ -f ./.env ]]; then
+    source ./.env
+  fi
+
   WORLD_NAME=${WORLD_NAME:-default_world}
+  tag=papermc-${MINECRAFT_VERSION:-1.19.3}-${PAPER_MINOR_VERSION:-346}
 
-  # ビルド
-  docker build \
-    -t minecraft \
-    --build-arg MINECRAFT_VERSION=${MINECRAFT_VERSION:-1.19.3} \
-    --build-arg PAPER_MINOR_VERSION=${PAPER_MINOR_VERSION:-345} \
-    ./docker/minecraft
-
-  # 起動
   docker run -itd \
     --mount "type=bind,src=$(pwd)/worlds,dst=/minecraft/worlds" \
     -e EULA=true \
@@ -23,6 +20,6 @@ export MSYS_NO_PATHCONV=1
     -e "HEAP_MAX=${HEAP_MAX:-1024M}" \
     -p ${LISTEN_PORT:-25565}:25565 \
     --restart unless-stopped \
-    --name "minecraft-server-${WORLD_NAME}" \
-    minecraft
+    --name "mcserver-${WORLD_NAME}" \
+    ${tag}
 )

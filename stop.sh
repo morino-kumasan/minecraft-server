@@ -4,15 +4,19 @@ export MSYS_NO_PATHCONV=1
 
 (
   cd "$(dirname "$0")"
-  source ./.env
+
+  if [[ -f ./.env ]]; then
+    source ./.env
+  fi
+
   WORLD_NAME=${WORLD_NAME:-default_world}
 
   # コンテナ停止してログ表示
-  docker stop "minecraft-server-${WORLD_NAME}"
-  docker logs -f "minecraft-server-${WORLD_NAME}"
+  docker stop "mcserver-${WORLD_NAME}"
+  docker logs -f "mcserver-${WORLD_NAME}"
 
   # コンテナは再利用しなくてよし
-  docker rm "minecraft-server-${WORLD_NAME}"
+  docker rm "mcserver-${WORLD_NAME}"
 
   # バックアップ
   cd ./worlds
